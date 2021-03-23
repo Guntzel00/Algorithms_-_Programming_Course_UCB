@@ -12,7 +12,7 @@ int main()
 
     int segundos = minutos * 60;
 
-    printf("%d horas sap %d munitos e %d segundos", horas, minutos, segundos);
+    printf("%d horas sao %d munitos e %d segundos", horas, minutos, segundos);
 
     return 0;
 }
