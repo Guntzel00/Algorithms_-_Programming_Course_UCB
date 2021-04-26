@@ -34,6 +34,8 @@ int main()
     int maleViewers = 0;
     int femaleViewers = 0;
 
+    char moreInfo;
+
     // ------ Inputs ------
 
     do
@@ -138,10 +140,23 @@ int main()
     printf("Número de espectadores crianças: %d\n", childViewers);
     printf("Número de espectadores Adolescentes: %d\n", teenagerViewers);
     printf("Número de espectadores Adultos: %d\n", adultViewers);
-    printf("Número de espectadores Idosos: %d\n", seniorViewers);
+    printf("Número de espectadores Idosos: %d\n\n\n", seniorViewers);
 
-    // system("clear");
+    printf("Gostaria de ver mais informações sobre os espectadores do filme?\n Digite [S] para Sim e [N] para Não.\n");
+    scanf("%c", &moreInfo);
+    moreInfo = toupper(moreInfo);
+    fflush(stdin);
 
-    printf("Número de espectadores homens e maiores de idade: %d\n", eighteenAndMale);
-    printf("Número de espectadores mulheres e maiores de idade: %d\n", eighteenAndFemale);
+    if (moreInfo == 'S')
+    {
+        system("clear");
+
+        printf("Número de espectadores homens e maiores de idade: %d\n", eighteenAndMale);
+        printf("Número de espectadores mulheres e maiores de idade: %d\n", eighteenAndFemale);
+        return 0;
+    }
+    else
+    {
+        return 0;
+    }
 }
