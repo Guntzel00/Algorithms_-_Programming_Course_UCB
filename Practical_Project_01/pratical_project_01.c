@@ -4,6 +4,7 @@ Matricula: UC204214634
 Curso: Algoritimos de programacao 
 */
 
+// Importing libraries
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
@@ -15,7 +16,7 @@ Curso: Algoritimos de programacao
 int main()
 {
 
-    // ------ Variables ------
+    // ------ Declaring Variables ------
 
     int numberOfsessions;
 
@@ -36,35 +37,42 @@ int main()
 
     char moreInfo;
 
-    // ------ Inputs ------
+    // ------ Inputs and Logic ------
 
+    /* Getting number of sessions */
+    do // Using a "do" repetiton structure
+    {
+        printf("Digite o número de sessões:\n"); // Asking the user the number of sessions
+        scanf("%d", &numberOfsessions);          // Requiring input from user
+        fflush(stdin);                           // Clearing input buffer
+    } while (numberOfsessions != 2);             // Validating our input value through while condition
+    //it will be repeated until the condition isn't meet
+
+    /* Getting the movie name */
     do
     {
-        printf("Digite o número de sessões:\n");
-        scanf("%d", &numberOfsessions);
+        printf("Digite o nome do filme:\n"); // Asking for the movie's name
+        fgets(movieNameInput, 50, stdin);    // Using "fgets" function to get the movie's name
         fflush(stdin);
-    } while (numberOfsessions != 2);
+
+    } while ((strlen(movieNameInput) - 1) == 0); //adjusting our function return to match the right parameters
+
+    /* Getting the number of viewers */
 
     do
     {
-        printf("Digite o nome do filme:\n");
-        fgets(movieNameInput, 50, stdin);
-        fflush(stdin);
-
-    } while ((strlen(movieNameInput) - 1) == 0);
-
-    do
-    {
-        printf("Digite o número de pessoas que assistiram ao filme:\n");
+        printf("Digite o número de pessoas que assistiram ao filme:\n"); //Asking the user the number of viewers
         scanf("%d", &numberOfViewers);
         fflush(stdin);
-    } while (numberOfViewers < 5 || numberOfViewers > 100);
+    } while (numberOfViewers < 5 || numberOfViewers > 100); //Input validation
 
-    for (int i = 0; i < numberOfViewers; i++)
+    for (int i = 0; i < numberOfViewers; i++) // "for" loop repetion structure to gather each viewers age and sex
     {
+        // declaring temporary variables
         int viewerAge;
         char viewerSex;
 
+        // Viewer age input + validation using "ctype.h" library
         do
         {
 
@@ -73,6 +81,7 @@ int main()
             fflush(stdin);
         } while (!isdigit(viewerAge) && (viewerAge <= 2 || viewerAge > 100));
 
+        // Viewer sex input + validation using regular conditionals
         do
         {
             printf("Digite o sexo do %dº espectador, use a letra [M] para masculino e [F] para feminino:\n", i + 1);
@@ -82,11 +91,12 @@ int main()
 
         } while (viewerSex != 'M' && viewerSex != 'F');
 
+        // diving viewers according to their sex group using switch case conditional
         switch (viewerSex)
         {
-        case 'F':
+        case 'F': // if "viewrSex" meets that value, the following case code block will be executed
             femaleViewers++;
-            break;
+            break; // stops switch condition
         case 'M':
             maleViewers++;
             break;
@@ -96,6 +106,7 @@ int main()
             break;
         }
 
+        //dividing viewer into groups according to their age using "if's" and "else's" conditionals
         if (viewerAge >= 65)
         {
             seniorViewers++;
@@ -131,8 +142,9 @@ int main()
         }
     }
 
-    system("clear");
+    system("clear"); //clearing out the terminal
 
+    //printing data collection results
     printf("Nome do filme: %s", movieNameInput);
     printf("Número de espectadores: %d\n", numberOfViewers);
     printf("Número de espectadores homens: %d\n", maleViewers);
@@ -142,6 +154,7 @@ int main()
     printf("Número de espectadores Adultos: %d\n", adultViewers);
     printf("Número de espectadores Idosos: %d\n\n\n", seniorViewers);
 
+    // Asking if the user would like to see more info about the viewers
     printf("Gostaria de ver mais informações sobre os espectadores do filme?\n Digite [S] para Sim e [N] para Não.\n");
     scanf("%c", &moreInfo);
     moreInfo = toupper(moreInfo);
@@ -153,7 +166,7 @@ int main()
 
         printf("Número de espectadores homens e maiores de idade: %d\n", eighteenAndMale);
         printf("Número de espectadores mulheres e maiores de idade: %d\n", eighteenAndFemale);
-        return 0;
+        return 0; // returning values to the main function
     }
     else
     {
