@@ -64,7 +64,7 @@ int main()
         printf("Digite o número de pessoas que assistiram ao filme:\n"); //Asking the user the number of viewers
         scanf("%d", &numberOfViewers);
         fflush(stdin);
-    } while (numberOfViewers < 5 || numberOfViewers > 100); //Input validation
+    } while (numberOfViewers < 10 || numberOfViewers > 100); //Input validation
 
     for (int i = 0; i < numberOfViewers; i++) // "for" loop repetion structure to gather each viewers age and sex
     {
